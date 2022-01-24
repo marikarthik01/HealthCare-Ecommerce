@@ -17,7 +17,18 @@ from django.contrib import admin
 from django.urls import path
 from .views import index
 
+from rest_framework import routers
+from backend.views import Productsview
+
+
 urlpatterns = [
     path('', index),
     path('admin/', admin.site.urls),
 ]
+
+router = routers.SimpleRouter()
+router.register('products', Productsview)
+
+urlpatterns += router.urls
+
+
